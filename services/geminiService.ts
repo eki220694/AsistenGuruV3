@@ -1,7 +1,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { QuizQuestion, LessonPlan } from '../types';
+import api from './apiService';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+// Initialize Gemini AI with API key from environment variables
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY as string });
 
 export const generateLessonPlanIdea = async (topic: string, gradeLevel: string): Promise<Omit<LessonPlan, 'id' | 'date' | 'title' | 'topic'>> => {
   try {
@@ -45,7 +47,6 @@ export const generateLessonPlanIdea = async (topic: string, gradeLevel: string):
   }
 };
 
-
 export const generateQuizQuestions = async (topic: string, count: number): Promise<QuizQuestion[]> => {
     try {
         const response = await ai.models.generateContent({
@@ -84,4 +85,26 @@ export const generateQuizQuestions = async (topic: string, count: number): Promi
         console.error("Error generating quiz questions:", error);
         throw new Error("Gagal membuat soal kuis dari AI.");
     }
+};
+
+// New function to save lesson plan to backend
+export const saveLessonPlan = async (lessonPlan: Omit<LessonPlan, 'id'>) => {
+  try {
+    const response = await api.post('/lessons', lessonPlan);
+    return response.data.lesson;
+  } catch (error) {
+    console.error("Error saving lesson plan:", error);
+    throw new Error("Gagal menyimpan rencana pelajaran.");
+  }
+};
+
+// New function to save quiz to backend
+export const saveQuiz = async (quiz: Omit<Quiz, 'id'>) => {
+  try {
+    const response = await api.post('/quizzes', quiz);
+    return response.data.quiz;
+  } catch (error) {
+    console.error("Error saving quiz:", error);
+    throw new Error("Gagal menyimpan kuis.");
+  }
 };

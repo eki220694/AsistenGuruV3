@@ -4,7 +4,7 @@ import type { Quiz, Student } from '../types';
 import Card from './common/Card';
 import Button from './common/Button';
 import Modal from './common/Modal';
-import { generateQuizQuestions } from '../services/geminiService';
+import { generateQuizQuestions, saveQuiz } from '../services/geminiService';
 
 interface AssessmentViewProps {
   quizzes: Quiz[];
@@ -64,7 +64,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ quizzes, students, addQ
         console.error(error);
         alert("Gagal membuat soal kuis. Periksa kunci API Anda dan coba lagi.");
     } finally {
-        setIsLoadingAi(false);
+      setIsLoadingAi(false);
     }
   };
 

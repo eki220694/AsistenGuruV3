@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { LessonPlan } from '../types';
 import Button from './common/Button';
 import Modal from './common/Modal';
-import { generateLessonPlanIdea } from '../services/geminiService';
+import { generateLessonPlanIdea, saveLessonPlan } from '../services/geminiService';
 
 interface LessonPlannerViewProps {
   lessons: LessonPlan[];
@@ -83,13 +83,16 @@ Tanggal: ${lesson.date}
 Topik: ${lesson.topic}
 
 Tujuan Pembelajaran:
-${lesson.objectives.map(o => `- ${o}`).join('\n')}
+${lesson.objectives.map(o => `- ${o}`).join('
+')}
 
 Materi yang Diperlukan:
-${lesson.materials.map(m => `- ${m}`).join('\n')}
+${lesson.materials.map(m => `- ${m}`).join('
+')}
 
 Kegiatan:
-${lesson.activities.map(a => `- ${a}`).join('\n')}
+${lesson.activities.map(a => `- ${a}`).join('
+')}
 
 Penilaian:
 ${lesson.assessment}
@@ -244,9 +247,15 @@ ${lesson.assessment}
           </div>
           
           <input type="text" placeholder="Topik" value={newLesson.topic || ''} onChange={e => setNewLesson({...newLesson, topic: e.target.value})} className="p-2 border rounded w-full" />
-          <textarea placeholder="Tujuan (satu per baris)" value={newLesson.objectives?.join('\n') || ''} onChange={e => setNewLesson({...newLesson, objectives: e.target.value.split('\n')})} className="p-2 border rounded w-full h-24" />
-          <textarea placeholder="Materi (satu per baris)" value={newLesson.materials?.join('\n') || ''} onChange={e => setNewLesson({...newLesson, materials: e.target.value.split('\n')})} className="p-2 border rounded w-full h-24" />
-          <textarea placeholder="Kegiatan (satu per baris)" value={newLesson.activities?.join('\n') || ''} onChange={e => setNewLesson({...newLesson, activities: e.target.value.split('\n')})} className="p-2 border rounded w-full h-24" />
+          <textarea placeholder="Tujuan (satu per baris)" value={newLesson.objectives?.join('
+') || ''} onChange={e => setNewLesson({...newLesson, objectives: e.target.value.split('
+')})} className="p-2 border rounded w-full h-24" />
+          <textarea placeholder="Materi (satu per baris)" value={newLesson.materials?.join('
+') || ''} onChange={e => setNewLesson({...newLesson, materials: e.target.value.split('
+')})} className="p-2 border rounded w-full h-24" />
+          <textarea placeholder="Kegiatan (satu per baris)" value={newLesson.activities?.join('
+') || ''} onChange={e => setNewLesson({...newLesson, activities: e.target.value.split('
+')})} className="p-2 border rounded w-full h-24" />
           <textarea placeholder="Penilaian" value={newLesson.assessment || ''} onChange={e => setNewLesson({...newLesson, assessment: e.target.value})} className="p-2 border rounded w-full h-20" />
           
           <div className="flex justify-end gap-2 mt-4">
