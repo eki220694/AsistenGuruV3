@@ -1,10 +1,11 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
-# Asisten Guru - Teacher Assistant Application
+# Asisten Guru V3
 
 This is a comprehensive teacher assistant application with AI integration, built with React, TypeScript, and Vite for the frontend, and Node.js, Express, and MongoDB for the backend.
+
+## Project Structure
+
+- `asistenguruv3/` - Frontend application (React, TypeScript, Vite)
+- `backend/` - Backend API (Node.js, Express, MongoDB)
 
 ## Features
 
@@ -16,117 +17,31 @@ This is a comprehensive teacher assistant application with AI integration, built
 - **Dashboard Views** - Visual overview of class statistics
 - **Responsive Design** - Works on desktop and mobile devices
 
-## Tech Stack
+## Quick Start
 
-### Frontend
-- **React** with TypeScript
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Axios** - HTTP client
-- **Google Generative AI** - AI integration
-
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM for MongoDB
-- **JSON Web Tokens (JWT)** - Authentication
-- **Google OAuth** - User authentication
-- **Google Generative AI** - AI-powered lesson plans and quizzes
-
-## Prerequisites
-
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
-
-## Setup Instructions
-
-### Frontend
-
-1. **Install dependencies:**
+1. **Install all dependencies:**
    ```bash
-   cd asistenguruv3
-   npm install
+   npm run install:all
    ```
 
 2. **Configure environment variables:**
-   Create a `.env` file in the asistenguruv3 directory with the following variables:
-   ```env
-   VITE_API_URL=http://localhost:5000/api
-   VITE_GEMINI_API_KEY=your_gemini_api_key_here
-   ```
+   - Create `.env` file in `asistenguruv3/` directory
+   - Create `.env` file in `backend/` directory
+   - Follow the instructions in each README for the required variables
 
-3. **Run the development server:**
+3. **Run both frontend and backend in development mode:**
    ```bash
    npm run dev
    ```
 
-### Backend
+## Documentation
 
-1. **Install dependencies:**
-   ```bash
-   cd backend
-   npm install
-   ```
-
-2. **Configure environment variables:**
-   Create a `.env` file in the backend directory with the following variables:
-   ```env
-   NODE_ENV=development
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/asistenguru
-   JWT_SECRET=your_jwt_secret_here
-   GOOGLE_CLIENT_ID=your_google_client_id_here
-   GOOGLE_CLIENT_SECRET=your_google_client_secret_here
-   GEMINI_API_KEY=your_gemini_api_key_here
-   ```
-
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-## Development
-
-To run both frontend and backend in development mode:
-
-1. Start the backend server:
-   ```bash
-   cd backend
-   npm run dev
-   ```
-
-2. In a new terminal, start the frontend:
-   ```bash
-   cd asistenguruv3
-   npm run dev
-   ```
-
-The application will be available at:
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
-
-## Deployment
-
-### Frontend
-The frontend can be deployed to any static hosting service like:
-- Vercel
-- Netlify
-- GitHub Pages
-
-### Backend
-The backend can be deployed to any Node.js hosting platform like:
-- Heroku
-- Render
-- DigitalOcean App Platform
-- AWS Elastic Beanstalk
-- Google Cloud Run
-
-Make sure to set the environment variables in your deployment platform.
-
-## API Documentation
-
-For detailed API documentation, please refer to the [backend README](../backend/README.md).
+For detailed documentation, please check the following files:
+- [Frontend README](asistenguruv3/README.md)
+- [Backend README](backend/README.md)
+- [Development Guide](docs/DEVELOPMENT.md)
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Gmail Authentication Guide](docs/GMAIL_AUTH.md)
 
 ## Contributing
 
