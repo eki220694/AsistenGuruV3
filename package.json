@@ -1,24 +1,15 @@
 {
   "name": "asisten-guru",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Teacher assistant application with AI integration",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "recharts": "^3.2.1",
-    "@google/genai": "^1.20.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "axios": "^1.6.0"
+    "dev:frontend": "cd asistenguruv3 && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "install:all": "npm install && cd asistenguruv3 && npm install && cd ../backend && npm install"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "concurrently": "^8.2.2"
   }
 }
