@@ -1,0 +1,15 @@
+{
+  "name": "asisten-guru",
+  "version": "1.0.0",
+  "description": "Teacher assistant application with AI integration",
+  "main": "index.js",
+  "scripts": {
+    "dev:frontend": "cd asistenguruv3 && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "install:all": "npm install && cd asistenguruv3 && npm install && cd backend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
